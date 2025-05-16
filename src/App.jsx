@@ -1,22 +1,25 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import PersonalInfoForm from "./PersonalInfoForm";
-import SelectPlan from "./SelectPlan";
-import ADD-ONS from "./ADD-ONS";
-import SUMMARY from "./SUMMARY";
-import StepsSidebar from "./StepsSidebar";
-import "./App.css";
+import React, { useState } from "react";
+import MainContent from "./MainContent";
 
 function App() {
+  const [currentStep, setCurrentStep] = useState(1);
+
+  const handleNextStep = () => {
+    setCurrentStep((prevStep) => prevStep + 1);
+  };
+
+  const handlePreviousStep = () => {
+    setCurrentStep((prevStep) => prevStep - 1);
+  };
+
   return (
-    <Router>
-      <Routes>
-        <Route path="/PersonalInfoForm" element={<PersonalInfoForm />} />
-        <Route path="/select-plan" element={<SelectPlan />} />
-        <Route path="/ADD-ONS" element={<ADD-ONS />} />
-        <Route path="/select-plan" element={<SUMMARY />} />
-      </Routes>
-    </Router>
+    <div className="bg-gray-100 h-screen flex justify-center items-center p-6">
+      <MainContent
+        currentStep={currentStep}
+        onNextStep={handleNextStep}
+        onPreviousStep={handlePreviousStep}
+      />
+    </div>
   );
 }
 

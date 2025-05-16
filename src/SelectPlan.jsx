@@ -38,7 +38,7 @@ function SelectPlan({ onNext }) {
       <p className="text-gray-600 mb-4">
         Choose the plan that best suits your needs.
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
         {plans.map((plan) => (
           <div
             key={plan.id}
@@ -71,13 +71,14 @@ function SelectPlan({ onNext }) {
           </div>
         ))}
       </div>
-      <button
-        className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-6"
+
+      <span
+        className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-6 "
         onClick={onNext}
         disabled={!selectedPlan}
       >
         Next: Add-ons
-      </button>
+      </span>
     </div>
   );
 }

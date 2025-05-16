@@ -1,13 +1,6 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import SelectPlan from "./SelectPlan";
 
-function PersonalInfoForm() {
-  const navigate = useNavigate();
-
-  const handleNextStep = () => {
-    navigate("/select-plan"); // المسار اللي تبغى تنتقل له
-  };
+function PersonalInfoForm({ onNext }) {
   return (
     <div className="p-6">
       <h2 className="text-xl font-semibold text-gray-800 mb-4">
@@ -54,15 +47,16 @@ function PersonalInfoForm() {
         <input
           type="tel"
           id="phone"
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-10"
           placeholder="e.g. +1 234 567 890"
         />
       </div>
-      <button className="mt-6" onClick={SelectPlan}>
-        <span className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-          Next Step
-        </span>
-      </button>
+      <span
+        className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-20"
+        onClick={onNext} // استدعاء الدالة اللي تم تمريرها كـ prop
+      >
+        Next Step
+      </span>
     </div>
   );
 }
